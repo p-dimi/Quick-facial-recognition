@@ -2,6 +2,8 @@
 Easy to use and utilize face recognition module based on dlib
 
 Utilizes open source dlib, opencv and numpy libraries.
+All necessary dlib models already included in the repository.
+
 Requirements in the requirement.txt file.
 
 
