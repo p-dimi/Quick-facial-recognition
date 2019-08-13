@@ -10,8 +10,10 @@ The dlib face recognition model (pretrained resnet) is included in the repo in t
 
 https://github.com/italojs/facial-landmarks-recognition-/blob/master/shape_predictor_68_face_landmarks.dat
 
-#### Make sure to save the downloaded landmark predictor model into the dlib_models folder
+#### Make sure to save the downloaded landmark predictor model into the dlib_models folder (or whichever folder you intend to store the dlib models in)
 
+## Downloading
+Simply download the repo and place it in the folder of whichever project you'd like to use it on. Feel free to store the dlib models and known faces in a different directory.
 
 ## Using
 Simply import, initialize, and pass a picture of a face you wish to recognize.
