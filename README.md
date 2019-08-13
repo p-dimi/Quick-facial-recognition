@@ -1,12 +1,19 @@
 # Face-Recognition
 Easy to use and utilize face recognition module based on dlib
 
-Utilizes open source dlib, opencv and numpy libraries.
-All necessary dlib models already included in the repository.
-
+## Requirements
 Requirements in the requirement.txt file.
 
+Utilizes open source dlib, opencv and numpy libraries.
+The dlib face recognition model (pretrained resnet) is included in the repo in the dlib_models folder.
+#### You will also need the dlib 68 landmarks predictor model. Download it here:
 
+https://github.com/italojs/facial-landmarks-recognition-/blob/master/shape_predictor_68_face_landmarks.dat
+
+#### Make sure to save the landmark predictor model into the dlib_models folder
+
+
+## Using
 Simply import, initialize, and pass a picture of a face you wish to recognize.
 Module will compare faces stored in a local folder (a known faces folder) vs the face you pass it, and perform the facial comparison for recognition.
 Module initialization might take some time, as it initially processes all faces in local folder into corresponding vector face representations, for faster real-time comparisons. The slower initialization will allow for faster runtime.
