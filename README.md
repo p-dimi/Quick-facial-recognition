@@ -10,7 +10,7 @@ The dlib face recognition model (pretrained resnet) is included in the repo in t
 
 https://github.com/italojs/facial-landmarks-recognition-/blob/master/shape_predictor_68_face_landmarks.dat
 
-#### Make sure to save the landmark predictor model into the dlib_models folder
+#### Make sure to save the downloaded landmark predictor model into the dlib_models folder
 
 
 ## Using
