@@ -1,5 +1,7 @@
 # Face-Recognition
-Easy to use and utilize face recognition module based on dlib
+Easy to use and utilize face recognition module based on dlib.
+
+Example use code found below.
 
 ## Requirements
 Requirements in the requirement.txt file.
