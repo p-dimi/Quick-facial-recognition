@@ -17,7 +17,11 @@ Simply download the repo and place it in the folder of whichever project you'd l
 
 ## Using
 Simply import, initialize, and pass a picture of a face you wish to recognize.
-Module will compare faces stored in a local folder (a known faces folder) vs the face you pass it, and perform the facial comparison for recognition.
+
+Store your face database in the known_faces folder (or any other directory you wish to use). It is advised the faces are at least 256x256 pixels in size, and that the pictures are named in accordance with the person's name.
+
+The module will compare faces stored in a local folder (a known faces folder) versus the face you pass it, and perform the facial comparison for recognition.
+
 Module initialization might take some time, as it initially processes all faces in local folder into corresponding vector face representations, for faster real-time comparisons. The slower initialization will allow for faster runtime.
 
 
