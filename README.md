@@ -27,18 +27,22 @@ The module will compare faces stored in a local folder (a known faces folder) ve
 Module initialization might take some time, as it initially processes all faces in local folder into corresponding vector face representations, for faster real-time comparisons. The slower initialization will allow for faster runtime.
 
 
-Class returns the person recognized (using the name of the picture file it is most resembling), and linear distance score.
-Class also displays a window with the image you are trying to recognize, and the image it is most similar with from your known faces folder.
+Class returns a dictionary, with the keys representing the recognized person(s) (using the name of the picture file it is most resembling), bounding box position in the image, and linear distance score.
 
 ### The class takes the following variables upon initializations:
 
 #### recognition_threshold
 The linear distance score that the face similarity must pass (be under). A higher value is more permitting, a lower value is more restricting. 
 
-The value is 0.6 by default.
+The value is 0.5 by default.
 
 #### size_modifier
 A float value representing by how much to scale all images for faster performance. A lower value will make runtime faster but be less accurate. A higher value will make runtime slower but more accurate. For example - a value of 0.75 means resizing the images to 75% of their original scale.
+
+The value is 0.75 by default. It is advised not to set it higher than 1.0, and no lower than 0.5.
+
+#### init_size_modifier
+Like size_modifier but specifically for the pictures in your known_faces folder. Makes for slightly faster initialization.
 
 The value is 0.75 by default. It is advised not to set it higher than 1.0, and no lower than 0.5.
 
@@ -87,15 +91,31 @@ while True:
     ret, frame = capture.read()
 
     # perform face recognition on the frame
-    person, similarity = f_r.recognize(frame)
-    
-    # print the recognized person's name and linear distance value
-    print(person)
-    print(similarity)
-    
-    # break by pressing "q"
-    if key('q'):
-        break
+    faces = f_r.recognize(frame)
 
+    # 
+    for face in faces:
+        try:
+            top_left = faces[face][0][0]
+
+            bottom_right = faces[face][0][1]
+            
+            # show the bounding box, name, and confidence of the person found
+            cv2.rectangle(frame, top_left, bottom_right, (0,0,255), 2)
+
+            cv2.putText(frame, face +' '+ str(round(faces[face][1], 2)), (top_left[0],top_left[1]+30), cv2.FONT_HERSHEY_PLAIN, 1, (255,255,255), 2)
+        except:
+            # in the case there's nothing to show, just pass
+            pass
+    
+    # show your frame with the person(s) detected
+    cv2.imshow('display window', frame)
+    
+    # break by pressing ESC
+    k = cv2.waitKey(1)
+    if k == 27:
+        break
+        
+cv2.destroyAllWindows()
 capture.release()
 ```
